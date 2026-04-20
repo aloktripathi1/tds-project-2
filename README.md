@@ -1,54 +1,58 @@
-# TDS Project 2
+# Project 2 - Tools in Data Science (Jan 2026)
 
-Clean submission repository for Project 2, organized into two parts:
+This repo contains my end-to-end solutions for Project 2, organized by question with reproducible scripts.
 
-- `q1`: Onion web scraping solution (Python)
-- `q2`: Solana Devnet transfer helper (Node.js)
+## What's Inside
 
-This repository intentionally keeps only source code and documentation.
-It does not include answer dumps, logs, cache files, private keys, or local environment files.
+| Folder | Focus |
+|---|---|
+| q1 | Onion web scraping workflow (12 tasks) |
+| q2 | Solana Devnet exact transfer plus memo |
 
-## Repository Structure
+## Tech Snapshot
 
-- `q1/scraper.py`: full scraper implementation for tasks 1 to 12
-- `q1/README.md`: context, approach, and usage notes for Q1
-- `q2/send-devnet-transfer.mjs`: transfer + memo validation script for Devnet
-- `q2/README.md`: context, usage notes, and security guidance for Q2
+- Languages: Python, JavaScript
+- Runtime: Python 3.10+, Node.js 18+
+- Key libraries: beautifulsoup4, @solana/web3.js, dotenv, bs58
 
-## Q1 Summary
+## Quick Start
 
-Q1 solves a multi-section onion scraping assessment by:
+```bash
+cd tds-project-2
 
-- crawling paginated pages across sections
-- resolving relative URLs (including base href handling)
-- extracting visible and hidden fields from HTML
-- computing required aggregates and task outputs
+# Q1 setup
+python3 -m venv .venv_wsl
+source .venv_wsl/bin/activate
+pip install beautifulsoup4
 
-See `q1/README.md` for full implementation notes and run instructions.
+# Q2 runtime deps
+cd q2
+npm install @solana/web3.js dotenv bs58
+cd ..
+```
 
-## Q1 Problem Statements (No Answers)
+## Runbook
 
-1. Compute total inventory value for Home category products.
-2. Find the SKU with highest review count in Outdoors category.
-3. Compute average rating of out-of-stock Electronics products.
-4. Sum internal views across all Sports news articles.
-5. Compute rounded average internal views across Politics articles.
-6. Find Sports article id with highest internal views.
-7. Find handle with highest followers among users in Catherinefurt.
-8. Sum likes across posts containing hashtag `#coding`.
-9. Count profiles with location equal to Traciefort.
-10. Sum user reputation for accounts joined during 2025-09.
-11. Find leaks thread id with the highest views.
-12. Sum reputation of all users marked as Vendor.
+- Q1: [q1/README.md](q1/README.md)
+- Q2: [q2/README.md](q2/README.md)
 
-## Q2 Summary
+Common commands:
 
-Q2 sends an exact Solana Devnet transfer with an exact memo and verifies both on finalized transaction data.
+```bash
+# Q1
+python q1/scraper.py
 
-See `q2/README.md` for environment variables and run instructions.
+# Q2
+TO_ADDRESS="<vault-address>" \
+AMOUNT_SOL="<exact-sol-amount>" \
+MEMO_TEXT="<exact-memo>" \
+SECRET_KEY="<json-array-or-base58-private-key>" \
+node q2/send-devnet-transfer.mjs
+```
 
-## Security and Integrity
+## Notes
 
-- No solved answer values are stored in this repo.
-- No private key material is committed.
-- This work is for authorized educational use only.
+- Keep secrets and private keys out of git.
+- Use environment variables for credentials.
+- Follow each question README for exact task-specific details.
+- This repo intentionally does not publish solved answer values.
