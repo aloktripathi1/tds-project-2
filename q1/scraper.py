@@ -181,6 +181,7 @@ def get_inventory_level(product_url: str) -> int:
 
 
 def task1() -> str:
+    # Q1: Total inventory value for Home category (price * inventory across products)
     products = collect_products(URLS["task1"])
     total = 0.0
     for p in products.values():
@@ -190,12 +191,14 @@ def task1() -> str:
 
 
 def task2() -> str:
+    # Q2: SKU with the highest review count in Outdoors category
     products = collect_products(URLS["task2"])
     best = max(products.values(), key=lambda x: x["reviews"])
     return best["sku"]
 
 
 def task3() -> str:
+    # Q3: Average rating of out-of-stock Electronics items
     products = collect_products(URLS["task3"])
     vals = [p["rating"] for p in products.values() if "out of stock" in p["stock_status"].lower()]
     avg = (sum(vals) / len(vals)) if vals else 0.0
@@ -226,6 +229,7 @@ def parse_article_views(article_url: str) -> tuple:
 
 
 def task4() -> str:
+    # Q4: Sum of internal views for all Sports articles
     total = 0
     for link in collect_article_links(URLS["task4"]):
         _, views = parse_article_views(link)
@@ -234,6 +238,7 @@ def task4() -> str:
 
 
 def task5() -> str:
+    # Q5: Rounded average internal views for Politics articles
     views = []
     for link in collect_article_links(URLS["task5"]):
         _, v = parse_article_views(link)
@@ -243,6 +248,7 @@ def task5() -> str:
 
 
 def task6() -> str:
+    # Q6: Sports article id with maximum internal views
     best_id, best_views = "", -1
     for link in collect_article_links(URLS["task6"]):
         aid, views = parse_article_views(link)
@@ -337,6 +343,7 @@ def extract_posts_and_users(social_pages: dict) -> tuple:
 
 
 def task7(posts_users_cache: dict = None) -> str:
+    # Q7: User handle in Catherinefurt with the highest follower count
     cache = posts_users_cache or {}
     users = cache.get("users", {})
     candidates = [(h, u["followers"]) for h, u in users.items() if u["location"] == "Catherinefurt"]
@@ -346,6 +353,7 @@ def task7(posts_users_cache: dict = None) -> str:
 
 
 def task8(posts_users_cache: dict = None) -> str:
+    # Q8: Total likes on posts containing #coding
     cache = posts_users_cache or {}
     posts = cache.get("posts", {})
     total = sum(p["likes"] for p in posts.values() if "#coding" in p["hashtags"])
@@ -353,6 +361,7 @@ def task8(posts_users_cache: dict = None) -> str:
 
 
 def task9(posts_users_cache: dict = None) -> str:
+    # Q9: Number of user profiles whose location is Traciefort
     cache = posts_users_cache or {}
     users = cache.get("users", {})
     count = sum(1 for u in users.values() if u["location"] == "Traciefort")
@@ -398,6 +407,7 @@ def parse_forum_user_profile(user_url: str) -> dict:
 
 
 def task10_forum_cache(cache: dict) -> str:
+    # Q10: Sum of reputation for users who joined in 2025-09
     total = 0
     for profile in cache.values():
         if profile["joined"].startswith("2025-09"):
@@ -406,11 +416,13 @@ def task10_forum_cache(cache: dict) -> str:
 
 
 def task12_forum_cache(cache: dict) -> str:
+    # Q12: Total reputation of users marked as Vendor
     total = sum(p["rep"] for p in cache.values() if p["vendor"])
     return str(total)
 
 
 def task11() -> str:
+    # Q11: Thread id with the highest view count in leaks board
     pages = collect_paginated_pages(URLS["task11"])
     best_id, best_views = "", -1
 
