@@ -1,6 +1,6 @@
-# P2 Solana Devnet Transfer Script
+# Q2 Solana Devnet Transfer Script
 
-Single-file JavaScript solution for the transfer task.
+Single-file JavaScript solution for the Q2 transfer task.
 
 This folder intentionally keeps only implementation and documentation. It does not include private keys, `.env` files, dependency lockfiles, or generated output.
 
@@ -34,7 +34,7 @@ The script in [send-devnet-transfer.mjs](send-devnet-transfer.mjs):
 Install runtime dependencies once in this folder:
 
 ```bash
-cd p2
+cd q2
 npm install @solana/web3.js dotenv bs58
 ```
 

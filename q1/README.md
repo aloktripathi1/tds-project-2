@@ -1,6 +1,6 @@
-# P1 Onion Scraper
+# Q1 Onion Scraper
 
-Single-file Python solution for the Project-1 web scraping assessment.
+Single-file Python solution for the Q1 web scraping assessment.
 
 This repository intentionally keeps only implementation and documentation. It does **not** store solved output values or submission answers.
 
@@ -69,7 +69,7 @@ Install and run:
 python3 -m venv .venv_wsl
 source .venv_wsl/bin/activate
 pip install beautifulsoup4
-python p1/scraper.py
+python q1/scraper.py
 ```
 
 ## Output Policy
